@@ -1,0 +1,183 @@
+{
+  "project": "Test Site 01",
+  "source": "mock",
+  "schema": "hyrolic-bim-v1",
+  "objects": [
+    {
+      "id": "col-01",
+      "name": "Column A1",
+      "ifc_type": "IfcColumn",
+      "category": "structural",
+      "position": {
+        "x": 3.0,
+        "y": 0.0,
+        "z": -2.0
+      },
+      "dimensions": {
+        "width": 0.6,
+        "depth": 0.6,
+        "height": 4.0
+      },
+      "material": "concrete"
+    },
+    {
+      "id": "col-02",
+      "name": "Column B2",
+      "ifc_type": "IfcColumn",
+      "category": "structural",
+      "position": {
+        "x": -4.0,
+        "y": 0.0,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 0.5,
+        "depth": 0.5,
+        "height": 4.0
+      },
+      "material": "concrete"
+    },
+    {
+      "id": "rebar-01",
+      "name": "Rebar Foundation Cluster A",
+      "ifc_type": "IfcReinforcingBar",
+      "category": "reinforcement",
+      "position": {
+        "x": 5.0,
+        "y": 0.0,
+        "z": 4.0
+      },
+      "dimensions": {
+        "extent_x": 0.8,
+        "extent_y": 1.2,
+        "extent_z": 0.8
+      },
+      "material": "steel",
+      "count": 25,
+      "notes": "Vertical rebar protruding from foundation pour"
+    },
+    {
+      "id": "rebar-02",
+      "name": "Rebar Cluster B",
+      "ifc_type": "IfcReinforcingBar",
+      "category": "reinforcement",
+      "position": {
+        "x": -5.0,
+        "y": 0.0,
+        "z": -4.0
+      },
+      "dimensions": {
+        "extent_x": 0.6,
+        "extent_y": 1.0,
+        "extent_z": 0.6
+      },
+      "material": "steel",
+      "count": 15
+    },
+    {
+      "id": "wall-01",
+      "name": "Wall A (back)",
+      "ifc_type": "IfcWall",
+      "category": "architectural",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": -7.5
+      },
+      "dimensions": {
+        "width": 20.0,
+        "height": 4.0,
+        "thickness": 0.2
+      },
+      "material": "concrete",
+      "openings": [
+        {
+          "type": "door",
+          "position": {
+            "x": -1.5,
+            "z": -7.5
+          },
+          "width": 1.2,
+          "height": 2.1
+        },
+        {
+          "type": "door",
+          "position": {
+            "x": 4.0,
+            "z": -7.5
+          },
+          "width": 1.5,
+          "height": 2.4
+        }
+      ]
+    },
+    {
+      "id": "wall-02",
+      "name": "Wall B (left)",
+      "ifc_type": "IfcWall",
+      "category": "architectural",
+      "position": {
+        "x": -10.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 15.0,
+        "height": 4.0,
+        "thickness": 0.2
+      },
+      "material": "concrete"
+    },
+    {
+      "id": "wall-03",
+      "name": "Wall C (right)",
+      "ifc_type": "IfcWall",
+      "category": "architectural",
+      "position": {
+        "x": 10.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 15.0,
+        "height": 4.0,
+        "thickness": 0.2
+      },
+      "material": "concrete"
+    },
+    {
+      "id": "pipe-01",
+      "name": "Conduit Run 1",
+      "ifc_type": "IfcPipeSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 2.0,
+        "y": 3.2,
+        "z": -3.0
+      },
+      "dimensions": {
+        "length": 6.0,
+        "diameter": 0.15
+      },
+      "material": "steel",
+      "notes": "Overhead conduit, exposed"
+    },
+    {
+      "id": "slab-01",
+      "name": "Ground Floor Slab",
+      "ifc_type": "IfcSlab",
+      "category": "structural",
+      "position": {
+        "x": 0.0,
+        "y": -0.15,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 20.0,
+        "depth": 15.0,
+        "thickness": 0.3
+      },
+      "material": "concrete"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "site": "test-site-01",
+  "date": "2026-09-11",
+  "scanner": "iPhone 16 Pro (Polycam LiDAR)",
+  "device": "iPhone 16 Pro",
+  "notes": "Synthetic test data: mock construction site with columns, rebar, pipe, openings. No real site.",
+  "coordinates": "local"
+}

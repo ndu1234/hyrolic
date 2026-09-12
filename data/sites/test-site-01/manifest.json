@@ -1,0 +1,37 @@
+{
+  "manifest_version": 1,
+  "generated": "2026-09-12",
+  "site": "test-site-01",
+  "meta": {
+    "site": "test-site-01",
+    "date": "2026-09-11",
+    "scanner": "iPhone 16 Pro (Polycam LiDAR)",
+    "device": "iPhone 16 Pro",
+    "notes": "Synthetic test data: mock construction site with columns, rebar, pipe, openings. No real site.",
+    "coordinates": "local"
+  },
+  "scans": [
+    "20260911"
+  ],
+  "point_clouds": [
+    {
+      "name": "scan-01.ply",
+      "path": "20260911/raw/scan-01.ply",
+      "format": "ply",
+      "bytes": 1144799,
+      "modified": "2026-09-12",
+      "ply": {
+        "format": "binary",
+        "vertices": 76308,
+        "faces": 0,
+        "has_vertex_color": true
+      }
+    }
+  ],
+  "photos": {
+    "count": 0,
+    "files": []
+  },
+  "other_files": [],
+  "errors": []
+}
