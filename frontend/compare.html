@@ -1,0 +1,688 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyrolic — Split View: Capture vs BIM</title>
+  <!-- Three.js from CDN -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      overflow: hidden;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* ── Header ─────────────────────────────────── */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 20px;
+      background: #13131a;
+      border-bottom: 1px solid #1e293b;
+      flex-shrink: 0;
+      z-index: 10;
+    }
+    .header-left { display: flex; align-items: center; gap: 12px; }
+    .logo { font-weight: 700; font-size: 16px; color: #22d3ee; }
+    .logo span { color: #64748b; font-weight: 400; }
+    .site-name { font-size: 13px; color: #94a3b8; }
+    .header-right { display: flex; align-items: center; gap: 16px; }
+    .tolerance-badge {
+      font-size: 11px;
+      background: rgba(251, 191, 36, 0.15);
+      border: 1px solid rgba(251, 191, 36, 0.3);
+      padding: 4px 10px;
+      border-radius: 6px;
+      color: #fbbf24;
+    }
+    .status-dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      display: inline-block;
+    }
+    .status-dot.green { background: #34d399; }
+    .status-dot.yellow { background: #fbbf24; }
+
+    /* ── Split View ─────────────────────────────── */
+    .split-container {
+      display: flex;
+      flex: 1;
+      min-height: 0;
+    }
+    .panel {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+    .panel + .panel {
+      border-left: 2px solid #1e293b;
+    }
+    .panel-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 6px 14px;
+      background: #13131a;
+      border-bottom: 1px solid #1e293b;
+      font-size: 12px;
+      font-weight: 600;
+      flex-shrink: 0;
+    }
+    .panel-header .label { display: flex; align-items: center; gap: 6px; }
+    .panel-header .badge {
+      font-size: 10px;
+      padding: 2px 6px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .badge.capture { background: rgba(34, 211, 238, 0.15); color: #22d3ee; border: 1px solid rgba(34, 211, 238, 0.3); }
+    .badge.bim { background: rgba(251, 191, 36, 0.15); color: #fbbf24; border: 1px solid rgba(251, 191, 36, 0.3); }
+
+    .canvas-container {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+    .canvas-container canvas { display: block; width: 100% !important; height: 100% !important; }
+
+    /* Floating overlay labels on 3D views */
+    .view-label {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      font-size: 10px;
+      color: #64748b;
+      background: rgba(10, 10, 15, 0.8);
+      padding: 4px 12px;
+      border-radius: 6px;
+      border: 1px solid #1e293b;
+      pointer-events: none;
+    }
+
+    /* ── Bottom Panel (deviations) ───────────────── */
+    .bottom-panel {
+      background: #13131a;
+      border-top: 1px solid #1e293b;
+      flex-shrink: 0;
+      max-height: 180px;
+      overflow-y: auto;
+    }
+    .bottom-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 20px;
+      font-size: 12px;
+      font-weight: 600;
+      border-bottom: 1px solid #1e293b;
+      cursor: pointer;
+    }
+    .bottom-header .counts { display: flex; gap: 12px; font-weight: 400; }
+    .count-matched { color: #34d399; }
+    .count-flagged { color: #fb7185; }
+    .count-missing { color: #fbbf24; }
+    .deviations-list { padding: 8px 20px; }
+    .deviation-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+      font-size: 12px;
+      border-bottom: 1px solid rgba(30, 41, 59, 0.5);
+    }
+    .deviation-row:last-child { border-bottom: none; }
+    .dev-icon { width: 18px; text-align: center; font-size: 13px; }
+    .dev-icon.match { color: #34d399; }
+    .dev-icon.flagged { color: #fb7185; }
+    .dev-icon.missing { color: #fbbf24; }
+    .dev-icon.extra { color: #a78bfa; }
+    .dev-name { font-weight: 500; min-width: 120px; }
+    .dev-detail { color: #94a3b8; flex: 1; }
+    .dev-status {
+      font-size: 10px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      font-weight: 500;
+    }
+    .dev-status.pass { background: rgba(52, 211, 153, 0.15); color: #34d399; }
+    .dev-status.flag { background: rgba(251, 112, 133, 0.15); color: #fb7185; }
+    .dev-status.miss { background: rgba(251, 191, 36, 0.15); color: #fbbf24; }
+
+    /* ── Legend ──────────────────────────────────── */
+    .legend {
+      display: flex;
+      gap: 16px;
+      padding: 4px 14px;
+      font-size: 10px;
+      color: #64748b;
+      border-top: 1px solid #1e293b;
+      background: #0f0f17;
+    }
+    .legend-item { display: flex; align-items: center; gap: 4px; }
+    .legend-swatch { width: 10px; height: 10px; border-radius: 2px; }
+
+    /* ── Scrollbar ───────────────────────────────── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ─── Header ───────────────────────────────────── -->
+  <div class="header">
+    <div class="header-left">
+      <div class="logo">Hyrolic <span>//</span> Split View</div>
+      <div class="site-name">test-site-01 · 2026-09-11</div>
+    </div>
+    <div class="header-right">
+      <div class="tolerance-badge">&#177;10 cm tolerance</div>
+      <span class="status-dot green"></span>
+    </div>
+  </div>
+
+  <!-- ─── Split 3D Views ───────────────────────────── -->
+  <div class="split-container">
+    <!-- LEFT: Go2 X Capture -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="label">
+          <span class="badge capture">Go2 X</span>
+          Capture — Point Cloud + Camera Detections
+        </div>
+        <span style="font-size:10px;color:#64748b;">76,308 pts · 1 frame</span>
+      </div>
+      <div class="canvas-container" id="capture-container">
+        <div class="view-label">drag to orbit · scroll to zoom</div>
+      </div>
+    </div>
+
+    <!-- RIGHT: BIM Model -->
+    <div class="panel">
+      <div class="panel-header">
+        <div class="label">
+          <span class="badge bim">BIM</span>
+          Model — IFC Objects
+        </div>
+        <span style="font-size:10px;color:#64748b;">9 objects</span>
+      </div>
+      <div class="canvas-container" id="bim-container">
+        <div class="view-label">drag to orbit · scroll to zoom</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ─── Legend ────────────────────────────────────── -->
+  <div class="legend">
+    <div class="legend-item"><span class="legend-swatch" style="background:#34d399;"></span> Matched</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#fb7185;"></span> Flagged (offset >10cm)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#fbbf24;"></span> Missing</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#a78bfa;"></span> Extra (unexpected)</div>
+    <div class="legend-item"><span class="legend-swatch" style="background:#60a5fa;"></span> BIM object (reference)</div>
+  </div>
+
+  <!-- ─── Bottom: Deviations ────────────────────────── -->
+  <div class="bottom-panel">
+    <div class="bottom-header">
+      <span>Deviation Report</span>
+      <span class="counts">
+        <span class="count-matched">&#10003; 6 matched</span>
+        <span class="count-flagged">&#9888; 1 flagged</span>
+        <span class="count-missing">&#9651; 1 missing</span>
+        <span class="count-flagged" style="color:#a78bfa;">&#9888; 1 extra</span>
+      </span>
+    </div>
+    <div class="deviations-list" id="deviations-list">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // 1. DATA — BIM Objects (from test-site-01-bim.json)
+    // ═══════════════════════════════════════════════════════════
+    const BIM_OBJECTS = [
+      { id:"col-01", name:"Column A1", type:"structural", pos:[3.0,2.0,-2.0], size:[0.6,4.0,0.6], color:0x60a5fa, material:"concrete" },
+      { id:"col-02", name:"Column B2", type:"structural", pos:[-4.0,2.0,3.0], size:[0.5,4.0,0.5], color:0x60a5fa, material:"concrete" },
+      { id:"rebar-01", name:"Rebar Cluster A", type:"reinforcement", pos:[5.0,0.6,4.0], size:[0.8,1.2,0.8], color:0x60a5fa, material:"steel" },
+      { id:"rebar-02", name:"Rebar Cluster B", type:"reinforcement", pos:[-5.0,0.5,-4.0], size:[0.6,1.0,0.6], color:0x60a5fa, material:"steel" },
+      { id:"wall-01", name:"Wall A (back)", type:"architectural", pos:[0.0,2.0,-7.5], size:[20.0,4.0,0.2], color:0x60a5fa, material:"concrete" },
+      { id:"wall-02", name:"Wall B (left)", type:"architectural", pos:[-10.0,2.0,0.0], size:[0.2,4.0,15.0], color:0x60a5fa, material:"concrete" },
+      { id:"wall-03", name:"Wall C (right)", type:"architectural", pos:[10.0,2.0,0.0], size:[0.2,4.0,15.0], color:0x60a5fa, material:"concrete" },
+      { id:"pipe-01", name:"Conduit Run 1", type:"mechanical", pos:[5.0,3.2,-3.0], size:[6.0,0.15,0.15], color:0x60a5fa, material:"steel" },
+      { id:"slab-01", name:"Floor Slab", type:"structural", pos:[0.0,-0.15,0.0], size:[20.0,0.3,15.0], color:0x60a5fa, material:"concrete" }
+    ];
+
+    // Simulated detection results (what the Go2 X "saw")
+    // Some match BIM, one is offset (flagged), one is missing, one is extra
+    const DETECTIONS = [
+      { id:"col-01", name:"Column A1", pos:[3.08,2.0,-1.94], offset:0.12, status:"flagged", note:"8cm offset east" },
+      { id:"col-02", name:"Column B2", pos:[-4.02,2.0,2.98], offset:0.04, status:"match", note:"within tolerance" },
+      { id:"rebar-01", name:"Rebar Cluster A", pos:[5.03,0.6,4.01], offset:0.03, status:"match", note:"within tolerance" },
+      { id:"wall-01", name:"Wall A (back)", pos:[0.0,2.0,-7.5], offset:0.0, status:"match", note:"exact match" },
+      { id:"wall-02", name:"Wall B (left)", pos:[-10.0,2.0,0.0], offset:0.0, status:"match", note:"exact match" },
+      { id:"wall-03", name:"Wall C (right)", pos:[10.0,2.0,0.0], offset:0.0, status:"match", note:"exact match" },
+      { id:"pipe-01", name:"Conduit Run 1", pos:[5.1,3.2,-3.0], offset:0.10, status:"match", note:"at tolerance limit" },
+      // rebar-02 is MISSING (not detected at all)
+      // extra-01 is an EXTRA element not in BIM
+    ];
+    const MISSING = ["rebar-02"];
+    const EXTRA = [
+      { id:"extra-01", name:"Unidentified Rebar Cluster", pos:[-3.0,0.5,5.0], size:[0.5,0.8,0.5], note:"not in BIM model" }
+    ];
+
+    // ══════════════════���════════════════════════════════════════
+    // 2. THREE.JS SETUP
+    // ═══════════════════════════════════════════════════════════
+
+    function createScene(containerId, bgColor = 0x0a0a0f) {
+      const container = document.getElementById(containerId);
+      const w = container.clientWidth;
+      const h = container.clientHeight;
+
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(bgColor);
+
+      const camera = new THREE.PerspectiveCamera(45, w / h, 0.1, 100);
+      camera.position.set(18, 12, 18);
+      camera.lookAt(0, 1, 0);
+
+      const renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      container.appendChild(renderer.domElement);
+
+      const controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.target.set(0, 1, 0);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.1;
+      controls.update();
+
+      // Grid helper
+      const gridHelper = new THREE.GridHelper(30, 20, 0x1e293b, 0x1e293b);
+      scene.add(gridHelper);
+
+      // Axes helper (small)
+      const axesHelper = new THREE.AxesHelper(2);
+      axesHelper.position.set(-14, 0, -10);
+      scene.add(axesHelper);
+
+      // Ambient light
+      scene.add(new THREE.AmbientLight(0x404060));
+
+      // Directional light
+      const dirLight = new THREE.DirectionalLight(0xffffff, 0.8);
+      dirLight.position.set(10, 20, 10);
+      scene.add(dirLight);
+
+      const dirLight2 = new THREE.DirectionalLight(0x8888ff, 0.3);
+      dirLight2.position.set(-10, 5, -10);
+      scene.add(dirLight2);
+
+      return { scene, camera, renderer, controls, container };
+    }
+
+    function animate(sceneObj) {
+      function loop() {
+        requestAnimationFrame(loop);
+        sceneObj.controls.update();
+        sceneObj.renderer.render(sceneObj.scene, sceneObj.camera);
+      }
+      loop();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 3. LEFT VIEW — Go2 X Capture (PLY point cloud + detections)
+    // ═══════════════════════════════════════════════════════════
+
+    function buildCaptureView() {
+      const s = createScene('capture-container', 0x0a0a0f);
+
+      // ── Synthetic PLY point cloud ──
+      // Since we can't fetch the PLY from file:// in all browsers,
+      // we regenerate the point cloud in JS using the same algorithm.
+      const N = 76308;
+      const positions = new Float32Array(N * 3);
+      const colors = new Float32Array(N * 3);
+      let idx = 0;
+
+      function addPoints(points) {
+        for (const [x, y, z, r, g, b] of points) {
+          positions[idx*3] = x;
+          positions[idx*3+1] = y;
+          positions[idx*3+2] = z;
+          colors[idx*3] = r / 255;
+          colors[idx*3+1] = g / 255;
+          colors[idx*3+2] = b / 255;
+          idx++;
+        }
+      }
+
+      // Generate the same scene as generate_test_data.py (seed 42)
+      // We reproduce the generation here so it works without a server
+      const rand = (() => { let s=42; return () => { s=(s*1664525+1013904223)&0xffffffff; return (s>>>0)/4294967296; }})();
+      function randUni(a,b) { return a + rand()*(b-a); }
+
+      // Floor
+      const floorPts = [];
+      for (let x = -10; x <= 10; x += 0.1)
+        for (let z = -7.5; z <= 7.5; z += 0.1)
+          floorPts.push([x, -0.02 + randUni(-0.01,0.01), z, 140,140,140]);
+      addPoints(floorPts);
+
+      // Walls
+      function wall(x0,y0,z0,w,h,sp,c) {
+        const pts=[];
+        for (let x=x0; Math.abs(x-x0)<=w; x+=sp)
+          for (let y=y0; y<=y0+h; y+=sp)
+            pts.push([x,y,z0,...c]);
+        return pts;
+      }
+      addPoints(wall(-10,0,-7.5,20,4,0.08,[170,155,140]));
+      addPoints(wall(-10,0,-7.5,15,4,0.08,[165,150,135]));
+      addPoints(wall(10,0,-7.5,15,4,0.08,[165,150,135]));
+
+      // Columns
+      function col(cx,cz,h,r,sp,c) {
+        const pts=[];
+        for (let a=0; a<360; a+=8) {
+          const rad=a*Math.PI/180, x=cx+r*Math.cos(rad), z=cz+r*Math.sin(rad);
+          for (let y=0; y<=h; y+=sp) pts.push([x,y,z,...c]);
+        }
+        for (let y=0; y<=h; y+=0.1)
+          for (const dx of [-0.1,0,0.1])
+            for (const dz of [-0.1,0,0.1])
+              pts.push([cx+dx,y,cz+dz,190,170,140]);
+        return pts;
+      }
+      addPoints(col(3,0,-2,4,0.05,[200,180,150]));
+      addPoints(col(-4,0,3,4,0.05,[210,190,160]));
+
+      // Rebar
+      function rebar(cx,cz,cnt,h,c) {
+        const pts=[];
+        for (let i=0; i<cnt; i++) {
+          const rx=cx+randUni(-0.3,0.3), rz=cz+randUni(-0.3,0.3);
+          for (let y=0; y<=h+randUni(-0.1,0.1); y+=0.04)
+            pts.push([rx+randUni(-0.01,0.01)*(y/h),y,rz+randUni(-0.01,0.01)*(y/h),...c]);
+        }
+        return pts;
+      }
+      addPoints(rebar(5,4,25,1.2,[180,80,60]));
+      addPoints(rebar(-5,-4,15,1.0,[190,90,70]));
+
+      // Pipe
+      const pipePts=[];
+      for (let a=0; a<360; a+=15) {
+        const rad=a*Math.PI/180, r=0.08*1.2;
+        for (let x=2; x<=8; x+=0.03)
+          pipePts.push([x,3.2+r*Math.sin(rad),-3+r*Math.cos(rad),130,120,110]);
+      }
+      addPoints(pipePts);
+
+      // Openings
+      function opening(cx,cz,w,h,c) {
+        const pts=[];
+        for (let y=0; y<h; y+=0.1) { pts.push([cx,y,cz,...c]); pts.push([cx+w,y,cz,...c]); }
+        for (let x=0; x<w; x+=0.1) { pts.push([cx+x,0,cz,...c]); pts.push([cx+x,h,cz,...c]); }
+        return pts;
+      }
+      addPoints(opening(-1.5,-7.48,1.2,2.1,[80,80,80]));
+      addPoints(opening(4,-7.48,1.5,2.4,[80,80,80]));
+
+      // Noise
+      for (let i=0; i<500; i++) {
+        const x=randUni(-10,10), z=randUni(-7.5,7.5), y=randUni(0,3.5);
+        const r=rand(), c=r<0.5?[180,160,140]:r<0.8?[120,120,120]:[100,100,80];
+        addPoints([[x,y,z,...c]]);
+      }
+
+      // Create point cloud geometry
+      const geo = new THREE.BufferGeometry();
+      geo.setAttribute('position', new THREE.BufferAttribute(positions, 3));
+      geo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+
+      const mat = new THREE.PointsMaterial({
+        size: 0.08,
+        vertexColors: true,
+        sizeAttenuation: true,
+        transparent: true,
+        opacity: 0.9
+      });
+      const points = new THREE.Points(geo, mat);
+      s.scene.add(points);
+
+      // ── Detection boxes (colored by status) ──
+      const statusColors = { match: 0x34d399, flagged: 0xfb7185, missing: 0xfbbf24, extra: 0xa78bfa };
+
+      DETECTIONS.forEach(d => {
+        const color = d.status === 'match' ? statusColors.match : statusColors.flagged;
+        const box = new THREE.Mesh(
+          new THREE.BoxGeometry(0.8, 1.5, 0.8),
+          new THREE.MeshBasicMaterial({ color, wireframe: true, transparent: true, opacity: 0.7 })
+        );
+        box.position.set(d.pos[0], d.pos[1], d.pos[2]);
+        s.scene.add(box);
+
+        // Label sprite
+        const label = makeLabel(d.name, color);
+        label.position.set(d.pos[0], d.pos[1] + 1.0, d.pos[2]);
+        s.scene.add(label);
+      });
+
+      // Missing element indicator
+      const missPos = BIM_OBJECTS.find(b => b.id === 'rebar-02');
+      if (missPos) {
+        const box = new THREE.Mesh(
+          new THREE.BoxGeometry(missPos.size[0], missPos.size[1], missPos.size[2]),
+          new THREE.MeshBasicMaterial({ color: 0xfbbf24, wireframe: true, transparent: true, opacity: 0.5 })
+        );
+        box.position.set(missPos.pos[0], missPos.pos[1], missPos.pos[2]);
+        s.scene.add(box);
+        const lbl = makeLabel('MISSING: Rebar Cluster B', 0xfbbf24);
+        lbl.position.set(missPos.pos[0], missPos.pos[1] + 1.0, missPos.pos[2]);
+        s.scene.add(lbl);
+      }
+
+      // Extra element
+      EXTRA.forEach(e => {
+        const box = new THREE.Mesh(
+          new THREE.BoxGeometry(e.size[0], e.size[1], e.size[2]),
+          new THREE.MeshBasicMaterial({ color: 0xa78bfa, wireframe: true, transparent: true, opacity: 0.7 })
+        );
+        box.position.set(e.pos[0], e.pos[1], e.pos[2]);
+        s.scene.add(box);
+        const lbl = makeLabel('EXTRA: ' + e.name, 0xa78bfa);
+        lbl.position.set(e.pos[0], e.pos[1] + 0.8, e.pos[2]);
+        s.scene.add(lbl);
+      });
+
+      animate(s);
+
+      // Handle resize
+      window.addEventListener('resize', () => {
+        const c = document.getElementById('capture-container');
+        const w = c.clientWidth, h = c.clientHeight;
+        s.camera.aspect = w / h;
+        s.camera.updateProjectionMatrix();
+        s.renderer.setSize(w, h);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 4. RIGHT VIEW — BIM Model
+    // ═══════════════════════════════════════════════════════════
+
+    function buildBIMView() {
+      const s = createScene('bim-container', 0x0a0a0f);
+
+      // Render each BIM object as a solid box with category color
+      const categoryColors = {
+        structural: 0x3b82f6,
+        architectural: 0x22d3ee,
+        reinforcement: 0xf59e0b,
+        mechanical: 0x8b5cf6
+      };
+
+      BIM_OBJECTS.forEach(obj => {
+        const color = categoryColors[obj.type] || 0x60a5fa;
+        const geo = new THREE.BoxGeometry(obj.size[0], obj.size[1], obj.size[2]);
+        const mat = new THREE.MeshPhongMaterial({
+          color: color,
+          transparent: true,
+          opacity: 0.6,
+          emissive: color,
+          emissiveIntensity: 0.1
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(obj.pos[0], obj.pos[1], obj.pos[2]);
+
+        // Wireframe outline
+        const wireframe = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geo),
+          new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.3 })
+        );
+        wireframe.position.copy(mesh.position);
+        s.scene.add(mesh);
+        s.scene.add(wireframe);
+
+        // Label
+        const label = makeLabel(obj.name, color);
+        label.position.set(obj.pos[0], obj.pos[1] + obj.size[1]/2 + 0.4, obj.pos[2]);
+        s.scene.add(label);
+      });
+
+      // Add BIM dimension annotations
+      const dimText = makeLabel('20m x 15m site', 0x64748b);
+      dimText.position.set(0, -0.8, 0);
+      s.scene.add(dimText);
+
+      animate(s);
+
+      window.addEventListener('resize', () => {
+        const c = document.getElementById('bim-container');
+        const w = c.clientWidth, h = c.clientHeight;
+        s.camera.aspect = w / h;
+        s.camera.updateProjectionMatrix();
+        s.renderer.setSize(w, h);
+      });
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 5. HELPERS
+    // ═══════════════════════════════════════════════════════════
+
+    function makeLabel(text, color) {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = 512;
+      canvas.height = 64;
+      ctx.clearRect(0, 0, 512, 64);
+
+      // Background pill
+      const hex = '#' + color.toString(16).padStart(6, '0');
+      ctx.fillStyle = 'rgba(10,10,15,0.8)';
+      const tw = ctx.measureText(text).width || ctx.measureText('M').width * text.length;
+      const pw = Math.max(tw + 24, text.length * 7 + 24);
+      roundRect(ctx, 4, 4, pw, 36, 8);
+      ctx.fill();
+      ctx.strokeStyle = hex;
+      ctx.lineWidth = 1;
+      ctx.stroke();
+
+      ctx.fillStyle = '#ffffff';
+      ctx.font = 'bold 18px -apple-system, sans-serif';
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.fillText(text, pw/2 + 4, 22);
+
+      const texture = new THREE.CanvasTexture(canvas);
+      texture.needsUpdate = true;
+      const mat = new THREE.SpriteMaterial({ map: texture, depthTest: false, depthWrite: false });
+      const sprite = new THREE.Sprite(mat);
+      sprite.scale.set(text.length * 0.25, 0.5, 1);
+      return sprite;
+    }
+
+    function roundRect(ctx, x, y, w, h, r) {
+      ctx.beginPath();
+      ctx.moveTo(x + r, y);
+      ctx.lineTo(x + w - r, y);
+      ctx.quadraticCurveTo(x + w, y, x + w, y + r);
+      ctx.lineTo(x + w, y + h - r);
+      ctx.quadraticCurveTo(x + w, y + h, x + w - r, y + h);
+      ctx.lineTo(x + r, y + h);
+      ctx.quadraticCurveTo(x, y + h, x, y + h - r);
+      ctx.lineTo(x, y + r);
+      ctx.quadraticCurveTo(x, y, x + r, y);
+      ctx.closePath();
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 6. DEVIATIONS LIST
+    // ═══════════════════════════════════════════════════════════
+
+    function renderDeviations() {
+      const list = document.getElementById('deviations-list');
+      const rows = [];
+
+      DETECTIONS.forEach(d => {
+        const icon = d.status === 'match' ? '&#10003;' : '&#9888;';
+        const iconClass = d.status === 'match' ? 'match' : 'flagged';
+        const statusClass = d.status === 'match' ? 'pass' : 'flag';
+        const statusLabel = d.status === 'match' ? 'PASS' : 'FLAGGED';
+        rows.push(`
+          <div class="deviation-row">
+            <span class="dev-icon ${iconClass}">${icon}</span>
+            <span class="dev-name">${d.name}</span>
+            <span class="dev-detail">${d.note} (${d.offset.toFixed(2)}m offset)</span>
+            <span class="dev-status ${statusClass}">${statusLabel}</span>
+          </div>
+        `);
+      });
+
+      MISSING.forEach(id => {
+        const obj = BIM_OBJECTS.find(b => b.id === id);
+        rows.push(`
+          <div class="deviation-row">
+            <span class="dev-icon missing">&#9651;</span>
+            <span class="dev-name">${obj ? obj.name : id}</span>
+            <span class="dev-detail">Not detected — element may not be built yet</span>
+            <span class="dev-status miss">MISSING</span>
+          </div>
+        `);
+      });
+
+      EXTRA.forEach(e => {
+        rows.push(`
+          <div class="deviation-row">
+            <span class="dev-icon extra">&#9888;</span>
+            <span class="dev-name">${e.name}</span>
+            <span class="dev-detail">${e.note} — at (${e.pos[0]}, ${e.pos[2]})</span>
+            <span class="dev-status flag">EXTRA</span>
+          </div>
+        `);
+      });
+
+      list.innerHTML = rows.join('');
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // 7. INIT
+    // ═══════════════════════════════════════════════════════════
+
+    buildCaptureView();
+    buildBIMView();
+    renderDeviations();
+  </script>
+</body>
+</html>

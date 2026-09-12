@@ -193,8 +193,8 @@ def main() -> int:
     ap.add_argument("--all", action="store_true", help="ingest every site under data/sites/")
     args = ap.parse_args()
 
-    # Resolve paths relative to the repo root (parent of ingest/)
-    root = Path(__file__).resolve().parents[1]
+    # Resolve paths relative to the repo root (grandparent of backend/ingest/)
+    root = Path(__file__).resolve().parents[2]
     sites_root = root / "data" / "sites"
 
     # Determine which sites to process

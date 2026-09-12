@@ -10,8 +10,8 @@ from pathlib import Path
 
 random.seed(42)
 
-SITES_DIR = Path(__file__).resolve().parents[1] / "data" / "sites"
-BIM_DIR = Path(__file__).resolve().parents[1] / "data" / "bim"
+SITES_DIR = Path(__file__).resolve().parents[2] / "data" / "sites"
+BIM_DIR = Path(__file__).resolve().parents[2] / "data" / "bim"
 
 
 def write_ply_binary(path: Path, vertices: list) -> None:

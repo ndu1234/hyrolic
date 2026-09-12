@@ -32,6 +32,8 @@
     "count": 0,
     "files": []
   },
-  "other_files": [],
+  "other_files": [
+    "manifest.json"
+  ],
   "errors": []
 }
