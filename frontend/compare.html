@@ -862,6 +862,24 @@
         s.scene.add(label);
       });
 
+      // Auto-fit camera to model
+      const objList = objects || BIM_OBJECTS;
+      if (objList.length > 0) {
+        let minX=Infinity, maxX=-Infinity, minY=Infinity, maxY=-Infinity, minZ=Infinity, maxZ=-Infinity;
+        objList.forEach(obj => {
+          const p = obj.position;
+          if (p.x < minX) minX = p.x; if (p.x > maxX) maxX = p.x;
+          if (p.y < minY) minY = p.y; if (p.y > maxY) maxY = p.y;
+          if (p.z < minZ) minZ = p.z; if (p.z > maxZ) maxZ = p.z;
+        });
+        const cx = (minX + maxX) / 2, cy = (minY + maxY) / 2, cz = (minZ + maxZ) / 2;
+        const size = Math.max(maxX - minX, maxY - minY, maxZ - minZ, 1);
+        const dist = size * 1.5;
+        s.camera.position.set(cx + dist, cy + dist, cz + dist);
+        s.controls.target.set(cx, cy, cz);
+        s.controls.update();
+      }
+
       const dimText = makeLabel(`${objects ? objects.length : BIM_OBJECTS.length} objects loaded`, 0x64748b);
       dimText.position.set(0, -0.8, 0);
       s.scene.add(dimText);

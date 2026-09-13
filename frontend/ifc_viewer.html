@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Hyrolic — IFC Viewer</title>
+  <!-- Three.js + GLTF loader + OrbitControls -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/GLTFLoader.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0a0a0f;
+      color: #e2e8f0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ── Header ─────────────────────────────────────── */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 10px 20px; background: #13131a;
+      border-bottom: 1px solid #1e293b; flex-shrink: 0; z-index: 10;
+    }
+    .logo { font-weight: 700; font-size: 16px; color: #22d3ee; }
+    .logo span { color: #64748b; font-weight: 400; }
+    .model-select {
+      background: #13131a; border: 1px solid #1e293b; color: #e2e8f0;
+      padding: 4px 8px; border-radius: 6px; font-size: 12px; cursor: pointer;
+    }
+    .model-status { font-size: 11px; color: #94a3b8; }
+
+    /* ── Toolbar ────────────────────────────────────── */
+    .toolbar {
+      display: flex; gap: 8px; padding: 8px 20px;
+      background: #0f0f17; border-bottom: 1px solid #1e293b; flex-shrink: 0;
+      align-items: center; flex-wrap: wrap;
+    }
+    .tool-btn {
+      font-size: 11px; background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.3); color: #22d3ee;
+      padding: 5px 12px; border-radius: 6px; cursor: pointer; transition: background 0.2s;
+    }
+    .tool-btn:hover { background: rgba(34, 211, 238, 0.2); }
+    .tool-btn.active { background: rgba(34, 211, 238, 0.35); }
+    .tool-btn.danger { background: rgba(251, 113, 133, 0.1); border-color: rgba(251, 113, 133, 0.3); color: #fb7185; }
+    .tool-btn.danger:hover { background: rgba(251, 113, 133, 0.2); }
+    .tool-sep { width: 1px; height: 20px; background: #1e293b; }
+
+    /* ── Main layout: viewer + side panel ───────────── */
+    .main { flex: 1; display: flex; min-height: 0; }
+    .viewer { flex: 1; position: relative; }
+    .viewer canvas { display: block; }
+    .viewer-hint {
+      position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%);
+      font-size: 11px; color: #64748b; background: rgba(10,10,15,0.8);
+      padding: 5px 14px; border-radius: 6px; border: 1px solid #1e293b;
+      pointer-events: none; white-space: nowrap;
+    }
+
+    /* ── Properties panel ───────────────────────────── */
+    .panel {
+      width: 340px; background: #13131a; border-left: 1px solid #1e293b;
+      display: flex; flex-direction: column; flex-shrink: 0;
+    }
+    .panel-header {
+      padding: 10px 14px; font-size: 12px; font-weight: 600;
+      border-bottom: 1px solid #1e293b; color: #94a3b8;
+    }
+    .props { flex: 1; overflow-y: auto; padding: 12px 14px; }
+    .no-selection {
+      color: #475569; font-size: 12px; text-align: center; margin-top: 40px;
+    }
+    .prop-group { margin-bottom: 16px; }
+    .prop-group-title {
+      font-size: 10px; text-transform: uppercase; letter-spacing: 0.08em;
+      color: #64748b; margin-bottom: 6px; border-bottom: 1px solid #1e293b; padding-bottom: 3px;
+    }
+    .prop-row { display: flex; justify-content: space-between; gap: 10px; font-size: 11px; padding: 2px 0; }
+    .prop-key { color: #64748b; flex-shrink: 0; }
+    .prop-val { color: #e2e8f0; text-align: right; word-break: break-word; max-width: 190px; }
+    .category-chip {
+      display: inline-block; font-size: 10px; padding: 2px 8px;
+      border-radius: 4px; margin-left: 6px; vertical-align: middle;
+    }
+    .chip-structural { background: rgba(59,130,246,0.2); color: #3b82f6; }
+    .chip-architectural { background: rgba(34,211,238,0.2); color: #22d3ee; }
+    .chip-reinforcement { background: rgba(245,158,11,0.2); color: #f59e0b; }
+    .chip-mechanical { background: rgba(139,92,246,0.2); color: #8b5cf6; }
+    .chip-other { background: rgba(148,163,184,0.2); color: #94a3b8; }
+
+    /* ── Section plane controls ─────────────────────── */
+    .section-controls {
+      padding: 8px 14px; border-top: 1px solid #1e293b; display: none;
+    }
+    .section-controls label { font-size: 10px; color: #64748b; display: block; margin-bottom: 4px; }
+    .section-controls input[type=range] { width: 100%; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #0a0a0f; }
+    ::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+  <!-- ── Header ─────────────────────────────────────── -->
+  <div class="header">
+    <div class="logo">Hyrolic <span>//</span> IFC Viewer</div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="model-status" id="model-status">No model loaded</span>
+      <select class="model-select" id="model-select" onchange="loadModel(this.value)">
+        <option value="">Select IFC model...</option>
+      </select>
+    </div>
+  </div>
+
+  <!-- ── Toolbar ────────────────────────────────────── -->
+  <div class="toolbar">
+    <button class="tool-btn active" id="btn-select" onclick="setTool('select')">Select</button>
+    <button class="tool-btn" id="btn-section" onclick="setTool('section')">Section</button>
+    <div class="tool-sep"></div>
+    <button class="tool-btn" onclick="hideSelected()">Hide</button>
+    <button class="tool-btn" onclick="isolateSelected()">Isolate</button>
+    <button class="tool-btn" onclick="showAll()">Show All</button>
+    <div class="tool-sep"></div>
+    <button class="tool-btn danger" onclick="selectAll()">Select All</button>
+    <span style="font-size:11px;color:#64748b;margin-left:auto;" id="elem-count"></span>
+  </div>
+
+  <!-- ── Main: viewer + properties ──────────────────── -->
+  <div class="main">
+    <div class="viewer" id="viewer">
+      <div class="viewer-hint" id="viewer-hint">Scroll to zoom · Drag to orbit · Click element to select</div>
+    </div>
+
+    <div class="panel">
+      <div class="panel-header">Properties</div>
+      <div class="props" id="props">
+        <div class="no-selection" id="no-selection">Click an element in the model to see its properties</div>
+      </div>
+      <div class="section-controls" id="section-controls">
+        <label>Section plane position <span id="section-pos">0.00 m</span></label>
+        <input type="range" id="section-slider" min="-50" max="50" value="0" step="0.5"
+               oninput="updateSection(this.value)">
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ═══════════════════════════════════════════════════════════
+    // STATE
+    // ═══════════════════════════════════════════════════════════
+    let scene, camera, renderer, controls;
+    let gltfScene = null;           // loaded model root
+    let elementMeshes = [];         // list of {mesh, element}
+    let manifest = null;            // element data (name, type, psets...)
+    let selectedMesh = null;
+    let currentTool = 'select';
+    let hiddenSet = new Set();      // element indexes hidden
+    let sectionPlane = null;
+    let sectionControls = null;
+
+    // ── Category colors ──────────────────────────────────────
+    const CATEGORY_COLORS = {
+      structural: 0x3b82f6,
+      architectural: 0x22d3ee,
+      reinforcement: 0xf59e0b,
+      mechanical: 0x8b5cf6,
+      other: 0x64748b
+    };
+
+    // ═══════════════════════════════════════════════════════════
+    // THREE.JS SETUP
+    // ═══════════════════════════════════════════════════════════
+    function initThree() {
+      const container = document.getElementById('viewer');
+      const w = container.clientWidth, h = container.clientHeight;
+
+      scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x0a0a0f);
+
+      camera = new THREE.PerspectiveCamera(45, w / h, 0.01, 1000);
+      camera.position.set(10, 8, 10);
+
+      renderer = new THREE.WebGLRenderer({ antialias: true });
+      renderer.setSize(w, h);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.localClippingEnabled = true;  // for section tool
+      container.appendChild(renderer.domElement);
+
+      controls = new THREE.OrbitControls(camera, renderer.domElement);
+      controls.enableDamping = true;
+      controls.dampingFactor = 0.1;
+
+      // Grid
+      const grid = new THREE.GridHelper(20, 20, 0x1e293b, 0x1e293b);
+      grid.position.y = 0;
+      scene.add(grid);
+
+      // Lights
+      scene.add(new THREE.AmbientLight(0x606080, 0.6));
+      const dir = new THREE.DirectionalLight(0xffffff, 0.9);
+      dir.position.set(10, 20, 10);
+      scene.add(dir);
+      const fill = new THREE.DirectionalLight(0x8888ff, 0.3);
+      fill.position.set(-10, 5, -10);
+      scene.add(fill);
+
+      // Resize
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+      });
+
+      // Raycaster
+      const raycaster = new THREE.Raycaster();
+      const mouse = new THREE.Vector2();
+
+      document.getElementById('viewer').addEventListener('click', (e) => {
+        if (currentTool === 'select') {
+          const rect = container.getBoundingClientRect();
+          mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+          raycaster.setFromCamera(mouse, camera);
+          // Check all visible element meshes
+          const candidates = elementMeshes
+            .filter(em => em.mesh.visible)
+            .map(em => em.mesh);
+          const hits = raycaster.intersectObjects(candidates, false);
+          if (hits.length > 0) {
+            // Find which element this mesh belongs to
+            const hitMesh = hits[0].object;
+            const em = elementMeshes.find(x => x.mesh === hitMesh);
+            if (em) selectElement(em);
+          } else {
+            deselect();
+          }
+        } else if (currentTool === 'section') {
+          // Click to place section plane through click point
+          const rect = container.getBoundingClientRect();
+          mouse.x = ((e.clientX - rect.left) / rect.width) * 2 - 1;
+          mouse.y = -((e.clientY - rect.top) / rect.height) * 2 + 1;
+          raycaster.setFromCamera(mouse, camera);
+          const hits = raycaster.intersectObjects(elementMeshes.map(em => em.mesh), false);
+          if (hits.length > 0) {
+            const pt = hits[0].point;
+            sectionPlane.setConstant(pt.z);
+            document.getElementById('section-pos').textContent = pt.z.toFixed(2) + ' m';
+            document.getElementById('section-slider').value = pt.z;
+          }
+        }
+      });
+
+      animate();
+    }
+
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // MODEL LOADING
+    // ═══════════════════════════════════════════════════════════
+    async function loadModel(name) {
+      if (!name) return;
+      const status = document.getElementById('model-status');
+      status.textContent = 'Loading ' + name + '...';
+
+      try {
+        // 1. Load element data (manifest)
+        const manifestResp = await fetch(`/api/ifc/${name}/manifest.json`);
+        manifest = await manifestResp.json();
+        const elemsByIndex = new Map();
+        manifest.elements.forEach(e => {
+          if (e.index !== null) elemsByIndex.set(e.index, e);
+        });
+
+        // 2. Load geometry (GLB)
+        const loader = new THREE.GLTFLoader();
+        const gltf = await loader.loadAsync(`/api/ifc/${name}/geometry.glb`);
+
+        // Clear previous model
+        if (gltfScene) {
+          scene.remove(gltfScene);
+          elementMeshes = [];
+          hiddenSet = new Set();
+          selectedMesh = null;
+          document.getElementById('no-selection').style.display = '';
+        }
+        gltfScene = gltf.scene;
+        scene.add(gltfScene);
+
+        // 3. Assign per-element materials (color by category) + build pick list
+        gltfScene.traverse(child => {
+          if (child.isMesh) {
+            // trimesh exports nodes as 'geometry_N' — extract the numeric index
+            let nodeIndex = child.name;
+            if (!elemsByIndex.has(nodeIndex)) {
+              const m = /(\d+)$/.exec(child.name);
+              if (m) nodeIndex = String(parseInt(m[1], 10));
+            }
+            const elem = elemsByIndex.get(nodeIndex);
+            const color = CATEGORY_COLORS[elem && elem.category ? elem.category : 'other'] || 0x64748b;
+
+            // Give each mesh a unique material so we can highlight it
+            child.material = new THREE.MeshPhongMaterial({
+              color: color,
+              transparent: true,
+              opacity: 0.85,
+              side: THREE.DoubleSide,
+              emissive: 0x000000
+            });
+            elementMeshes.push({ mesh: child, element: elem });
+          }
+        });
+
+        // 4. Auto-fit camera
+        const box = new THREE.Box3().setFromObject(gltfScene);
+        const center = box.getCenter(new THREE.Vector3());
+        const size = box.getSize(new THREE.Vector3());
+        const maxDim = Math.max(size.x, size.y, size.z, 1);
+        camera.position.copy(center).add(new THREE.Vector3(maxDim, maxDim * 0.8, maxDim));
+        controls.target.copy(center);
+        controls.update();
+
+        // 5. Update UI
+        document.getElementById('elem-count').textContent =
+          `${manifest.num_with_geometry} / ${manifest.num_elements} elements`;
+        status.textContent = `${manifest.project} — ${manifest.num_with_geometry} elements`;
+        renderer.render(scene, camera);
+      } catch (err) {
+        status.textContent = 'Error: ' + err.message;
+        console.error(err);
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // SELECTION + PROPERTIES
+    // ═══════════════════════════════════════════════════════════
+    function selectElement(em) {
+      // Reset previous
+      if (selectedMesh && selectedMesh.material) {
+        selectedMesh.material.emissive.setHex(0x000000);
+        selectedMesh.material.opacity = 0.85;
+      }
+      selectedMesh = em.mesh;
+      selectedMesh.material.emissive.setHex(0xfbbf24);
+      selectedMesh.material.opacity = 1;
+      renderProperties(em.element);
+      document.getElementById('no-selection').style.display = 'none';
+    }
+
+    function deselect() {
+      if (selectedMesh && selectedMesh.material) {
+        selectedMesh.material.emissive.setHex(0x000000);
+        selectedMesh.material.opacity = 0.85;
+      }
+      selectedMesh = null;
+      document.getElementById('no-selection').style.display = '';
+      document.getElementById('props').innerHTML =
+        '<div class="no-selection">Click an element in the model to see its properties</div>';
+    }
+
+    function renderProperties(elem) {
+      if (!elem) return;
+      const chipClass = {
+        structural: 'chip-structural', architectural: 'chip-architectural',
+        reinforcement: 'chip-reinforcement', mechanical: 'chip-mechanical', other: 'chip-other'
+      }[elem.category] || 'chip-other';
+
+      let html = `
+        <div class="prop-group">
+          <div class="prop-group-title">Element <span class="category-chip ${chipClass}">${elem.category}</span></div>
+          <div class="prop-row"><span class="prop-key">Name</span><span class="prop-val">${esc(elem.name)}</span></div>
+          <div class="prop-row"><span class="prop-key">IFC Type</span><span class="prop-val">${esc(elem.ifc_type)}</span></div>
+          <div class="prop-row"><span class="prop-key">GUID</span><span class="prop-val">${esc(elem.guid)}</span></div>
+          <div class="prop-row"><span class="prop-key">Storey</span><span class="prop-val">${esc(elem.storey || '—')}</span></div>
+        </div>
+        <div class="prop-group">
+          <div class="prop-group-title">Position (m)</div>
+          <div class="prop-row"><span class="prop-key">X</span><span class="prop-val">${elem.position_m.x}</span></div>
+          <div class="prop-row"><span class="prop-key">Y</span><span class="prop-val">${elem.position_m.y}</span></div>
+          <div class="prop-row"><span class="prop-key">Z</span><span class="prop-val">${elem.position_m.z}</span></div>
+        </div>`;
+
+      // Property sets
+      const psets = elem.psets || {};
+      const psetNames = Object.keys(psets);
+      if (psetNames.length > 0) {
+        psetNames.slice(0, 8).forEach(psetName => {
+          const props = psets[psetName];
+          const rows = Object.entries(props).slice(0, 12)
+            .map(([k, v]) => `<div class="prop-row"><span class="prop-key">${esc(k)}</span><span class="prop-val">${esc(String(v))}</span></div>`)
+            .join('');
+          html += `<div class="prop-group">
+            <div class="prop-group-title">${esc(psetName)}</div>
+            ${rows || '<span style="color:#475569;font-size:10px;">(empty)</span>'}
+          </div>`;
+        });
+      } else {
+        html += `<div class="prop-group">
+          <div class="prop-group-title">Property Sets</div>
+          <span style="color:#475569;font-size:10px;">No property sets found</span>
+        </div>`;
+      }
+
+      document.getElementById('props').innerHTML = html;
+    }
+
+    function esc(s) {
+      const div = document.createElement('div');
+      div.textContent = s == null ? '' : String(s);
+      return div.innerHTML;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // TOOLS: hide / isolate / show all / select all
+    // ═══════════════════════════════════════════════════════════
+    function hideSelected() {
+      if (selectedMesh) {
+        selectedMesh.visible = false;
+        deselect();
+      }
+    }
+
+    function isolateSelected() {
+      const target = selectedMesh;
+      if (!target) return;
+      elementMeshes.forEach(em => {
+        em.mesh.visible = em.mesh === target;
+      });
+      hiddenSet.clear();
+      deselect();
+    }
+
+    function showAll() {
+      elementMeshes.forEach(em => { em.mesh.visible = true; });
+      hiddenSet.clear();
+    }
+
+    function selectAll() {
+      // Highlight everything (dim others is same as isolate-all)
+      elementMeshes.forEach(em => {
+        em.mesh.visible = true;
+        em.mesh.material.emissive.setHex(0xfbbf24);
+        em.mesh.material.opacity = 0.95;
+      });
+      document.getElementById('elem-count').textContent =
+        `${elementMeshes.length} elements selected`;
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // SECTION TOOL
+    // ═══════════════════════════════════════════════════════════
+    function setTool(tool) {
+      currentTool = tool;
+      document.getElementById('btn-select').classList.toggle('active', tool === 'select');
+      document.getElementById('btn-section').classList.toggle('active', tool === 'section');
+      document.getElementById('section-controls').style.display = tool === 'section' ? 'block' : 'none';
+      document.getElementById('viewer-hint').textContent =
+        tool === 'section'
+          ? 'Click an element to place the section plane through it · drag slider to adjust'
+          : 'Scroll to zoom · Drag to orbit · Click element to select';
+
+      if (tool === 'section') {
+        if (!sectionPlane) {
+          sectionPlane = new THREE.Plane(new THREE.Vector3(0, 0, 1), 0);
+          sectionControls = new THREE.PlaneHelper(sectionPlane, 20, 0xfbbf24);
+          scene.add(sectionControls);
+        }
+        renderer.clippingPlanes = [sectionPlane];
+      } else {
+        renderer.clippingPlanes = [];
+        if (sectionControls) sectionControls.visible = false;
+      }
+    }
+
+    function updateSection(value) {
+      if (!sectionPlane) return;
+      sectionPlane.setConstant(parseFloat(value));
+      document.getElementById('section-pos').textContent = value + ' m';
+      if (sectionControls) {
+        sectionControls.position.set(0, 0, parseFloat(value));
+      }
+    }
+
+    // ═══════════════════════════════════════════════════════════
+    // INIT
+    // ═══════════════════════════════════════════════════════════
+    initThree();
+
+    // Populate model dropdown
+    fetch('/api/ifc-models')
+      .then(r => r.json())
+      .then(data => {
+        const select = document.getElementById('model-select');
+        data.models.forEach(m => {
+          const opt = document.createElement('option');
+          opt.value = m.name;
+          opt.textContent = `${m.project} (${m.num_elements} els, ${m.glb_mb} MB)`;
+          select.appendChild(opt);
+        });
+      })
+      .catch(err => console.error('Failed to load model list:', err));
+  </script>
+</body>
+</html>

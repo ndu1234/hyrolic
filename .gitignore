@@ -1,0 +1,9 @@
+node_modules/
+dist/
+data/bim/ifc/FOJAB_Landsarkivet.ifc
+data/bim/ifc/SGD_HiTOS_Arch.ifc
+data/bim/ifc/SGD_HiTOS_Eng-ELE.ifc
+data/bim/ifc/SGD_HiTOS_Eng-HVAC.ifc
+*.glb
+*.db
+__pycache__/

@@ -16,10 +16,15 @@ import tempfile
 import uuid
 from pathlib import Path
 
+# ── Ensure the repo root is on Python's path ──────────────────
+_REPO_ROOT = Path(__file__).resolve().parents[1]
+if str(_REPO_ROOT) not in sys.path:
+    sys.path.insert(0, str(_REPO_ROOT))
+
 # Try to use FastAPI for a proper API, fall back to http.server
 try:
     from fastapi import FastAPI, UploadFile, File
-    from fastapi.responses import JSONResponse, HTMLResponse
+    from fastapi.responses import JSONResponse, HTMLResponse, FileResponse
     from fastapi.staticfiles import StaticFiles
     import uvicorn
     HAS_FASTAPI = True
@@ -115,6 +120,67 @@ if HAS_FASTAPI:
             return JSONResponse({"error": "File not found"}, status_code=404)
         data = json.loads(file_path.read_text())
         return JSONResponse(data)
+
+    @app.get("/api/ifc-models")
+    async def list_ifc_models():
+        """List extracted IFC model directories (each has manifest.json + geometry.glb)."""
+        models = []
+        if BIM_DIR.exists():
+            for d in sorted(BIM_DIR.iterdir()):
+                manifest_path = d / 'manifest.json'
+                glb_path = d / 'geometry.glb'
+                if manifest_path.exists() and glb_path.exists():
+                    manifest = json.loads(manifest_path.read_text())
+                    models.append({
+                        "name": d.name,
+                        "project": manifest.get('project', d.name),
+                        "num_elements": manifest.get('num_elements', 0),
+                        "num_with_geometry": manifest.get('num_with_geometry', 0),
+                        "glb_mb": round(glb_path.stat().st_size / 1e6, 2),
+                    })
+        return JSONResponse({"models": models})
+
+    @app.get("/api/bim-ifc-files")
+    async def list_ifc_files():
+        """List raw .ifc files available for the web-ifc viewer."""
+        ifc_dir = BIM_DIR / 'ifc'
+        files = []
+        if ifc_dir.exists():
+            for f in sorted(ifc_dir.glob('*.ifc')):
+                files.append({
+                    "name": f.name,
+                    "size_mb": round(f.stat().st_size / 1e6, 2),
+                })
+        return JSONResponse({"files": files})
+
+    @app.get("/ifc/{filename}")
+    async def serve_ifc_file(filename: str):
+        """Serve a raw .ifc or .wasm file (from data/bim/ifc/)."""
+        file_path = BIM_DIR / 'ifc' / filename
+        if not file_path.exists():
+            return JSONResponse({"error": "File not found"}, status_code=404)
+        # Serve wasm files with correct MIME type
+        if filename.endswith('.wasm'):
+            return FileResponse(str(file_path), media_type='application/wasm')
+        if filename.endswith('.worker.js'):
+            return FileResponse(str(file_path), media_type='application/javascript')
+        return FileResponse(str(file_path), media_type='application/octet-stream')
+
+    @app.get("/api/ifc/{model_name}/manifest.json")
+    async def get_ifc_manifest(model_name: str):
+        """Get the element-data manifest for an extracted IFC model."""
+        file_path = BIM_DIR / model_name / 'manifest.json'
+        if not file_path.exists():
+            return JSONResponse({"error": "Model not found"}, status_code=404)
+        return JSONResponse(json.loads(file_path.read_text()))
+
+    @app.get("/api/ifc/{model_name}/geometry.glb")
+    async def get_ifc_glb(model_name: str):
+        """Serve the geometry cache GLB for an extracted IFC model."""
+        file_path = BIM_DIR / model_name / 'geometry.glb'
+        if not file_path.exists():
+            return JSONResponse({"error": "GLB not found"}, status_code=404)
+        return FileResponse(str(file_path), media_type='model/gltf-binary')
 
 else:
     # ── Fallback: simple HTTP server ─────────────────────────

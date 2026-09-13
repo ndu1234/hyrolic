@@ -176,9 +176,9 @@ def get_object_dimensions(entity) -> dict:
                 mins = pts.min(axis=0)
                 maxs = pts.max(axis=0)
                 return {
-                    'width': float(maxs[0] - mins[0]),
-                    'height': float(maxs[1] - mins[1]),
-                    'depth': float(maxs[2] - mins[2]),
+                    'width': round(float(maxs[0] - mins[0]) / 1000, 3),
+                    'height': round(float(maxs[1] - mins[1]) / 1000, 3),
+                    'depth': round(float(maxs[2] - mins[2]) / 1000, 3),
                 }
     except Exception:
         pass
@@ -245,9 +245,9 @@ def parse_ifc(ifc_path: Path) -> dict:
         # Get placement matrix
         placement = get_object_placement(element)
         position = {
-            'x': round(float(placement[0, 3]), 3),
-            'y': round(float(placement[1, 3]), 3),
-            'z': round(float(placement[2, 3]), 3),
+            'x': round(float(placement[0, 3]) / 1000, 3),
+            'y': round(float(placement[1, 3]) / 1000, 3),
+            'z': round(float(placement[2, 3]) / 1000, 3),
         }
 
         # Get dimensions
