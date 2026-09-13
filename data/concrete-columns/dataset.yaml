@@ -1,0 +1,8 @@
+# Concrete Columns Dataset — 501 images, 8,588 column instances
+# Source: https://data.mendeley.com/datasets/rknjxtg2vn
+
+train: /Users/batman/hyrolic/data/concrete-columns/images
+val: /Users/batman/hyrolic/data/concrete-columns/images
+
+nc: 1
+names: ['column']
