@@ -1,0 +1,267 @@
+{
+  "model": "data/synthetic/test-site-01/models/run/weights/best.pt",
+  "num_frames": 11,
+  "total_detections": 16,
+  "classes_used": [
+    "column",
+    "wall"
+  ],
+  "detections": [
+    {
+      "frame": "frame_0000",
+      "bbox": [
+        615.2,
+        76.5,
+        1277.4,
+        349.4
+      ],
+      "confidence": 0.403,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        946.3,
+        212.9
+      ]
+    },
+    {
+      "frame": "frame_0001",
+      "bbox": [
+        327.6,
+        104.4,
+        1270.2,
+        350.7
+      ],
+      "confidence": 0.228,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        798.9,
+        227.5
+      ]
+    },
+    {
+      "frame": "frame_0002",
+      "bbox": [
+        1.8,
+        3.4,
+        746.3,
+        360.0
+      ],
+      "confidence": 0.315,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        374.1,
+        181.7
+      ]
+    },
+    {
+      "frame": "frame_0002",
+      "bbox": [
+        1.1,
+        0.0,
+        1272.2,
+        353.1
+      ],
+      "confidence": 0.244,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        636.7,
+        176.5
+      ]
+    },
+    {
+      "frame": "frame_0004",
+      "bbox": [
+        7.1,
+        41.0,
+        911.2,
+        348.5
+      ],
+      "confidence": 0.567,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        459.1,
+        194.8
+      ]
+    },
+    {
+      "frame": "frame_0004",
+      "bbox": [
+        546.5,
+        208.2,
+        895.0,
+        381.1
+      ],
+      "confidence": 0.228,
+      "class_id": 1,
+      "class_name": "wall",
+      "center_2d": [
+        720.7,
+        294.6
+      ]
+    },
+    {
+      "frame": "frame_0005",
+      "bbox": [
+        1.8,
+        6.4,
+        1192.7,
+        350.2
+      ],
+      "confidence": 0.448,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        597.2,
+        178.3
+      ]
+    },
+    {
+      "frame": "frame_0005",
+      "bbox": [
+        171.9,
+        86.7,
+        1275.4,
+        353.3
+      ],
+      "confidence": 0.368,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        723.7,
+        220.0
+      ]
+    },
+    {
+      "frame": "frame_0005",
+      "bbox": [
+        1.1,
+        99.8,
+        913.5,
+        352.0
+      ],
+      "confidence": 0.233,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        457.3,
+        225.9
+      ]
+    },
+    {
+      "frame": "frame_0006",
+      "bbox": [
+        378.3,
+        36.8,
+        1086.8,
+        349.5
+      ],
+      "confidence": 0.479,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        732.5,
+        193.2
+      ]
+    },
+    {
+      "frame": "frame_0007",
+      "bbox": [
+        123.1,
+        19.1,
+        1258.7,
+        350.4
+      ],
+      "confidence": 0.637,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        690.9,
+        184.7
+      ]
+    },
+    {
+      "frame": "frame_0008",
+      "bbox": [
+        10.2,
+        13.0,
+        1082.6,
+        369.0
+      ],
+      "confidence": 0.531,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        546.4,
+        191.0
+      ]
+    },
+    {
+      "frame": "frame_0008",
+      "bbox": [
+        418.6,
+        19.3,
+        1280.0,
+        376.8
+      ],
+      "confidence": 0.223,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        849.3,
+        198.1
+      ]
+    },
+    {
+      "frame": "frame_0008",
+      "bbox": [
+        124.2,
+        45.0,
+        1236.7,
+        350.5
+      ],
+      "confidence": 0.21,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        680.5,
+        197.8
+      ]
+    },
+    {
+      "frame": "frame_0009",
+      "bbox": [
+        0.0,
+        3.0,
+        1265.2,
+        345.1
+      ],
+      "confidence": 0.23,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        632.6,
+        174.0
+      ]
+    },
+    {
+      "frame": "frame_0010",
+      "bbox": [
+        3.1,
+        16.0,
+        869.4,
+        357.8
+      ],
+      "confidence": 0.62,
+      "class_id": 0,
+      "class_name": "column",
+      "center_2d": [
+        436.2,
+        186.9
+      ]
+    }
+  ]
+}
