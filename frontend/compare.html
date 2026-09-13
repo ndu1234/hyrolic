@@ -50,6 +50,40 @@
     .status-dot.green { background: #34d399; }
     .status-dot.yellow { background: #fbbf24; }
 
+    /* ── Upload / BIM Selector ───────────────────── */
+    .upload-btn {
+      font-size: 11px;
+      background: rgba(34, 211, 238, 0.1);
+      border: 1px solid rgba(34, 211, 238, 0.3);
+      padding: 6px 12px;
+      border-radius: 6px;
+      color: #22d3ee;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .upload-btn:hover { background: rgba(34, 211, 238, 0.2); }
+    .upload-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+    .bim-select {
+      background: #13131a;
+      border: 1px solid #1e293b;
+      color: #e2e8f0;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 11px;
+      cursor: pointer;
+    }
+    .upload-status {
+      font-size: 10px;
+      color: #94a3b8;
+      max-width: 200px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .upload-status.loading { color: #fbbf24; }
+    .upload-status.success { color: #34d399; }
+    .upload-status.error { color: #fb7185; }
+
     /* ── Split View ─────────────────────────────── */
     .split-container {
       display: flex;
@@ -185,6 +219,15 @@
       <div class="site-name">test-site-01 · 2026-09-11</div>
     </div>
     <div class="header-right">
+      <select class="bim-select" id="bim-select" onchange="loadBimFile()">
+        <option value="">Load BIM model...</option>
+        <option value="synthetic" selected>Synthetic Test Site (built-in)</option>
+      </select>
+      <label class="upload-btn" id="upload-btn">
+        Upload IFC &#x2191;
+        <input type="file" accept=".ifc" id="ifc-input" style="display:none" onchange="uploadIfcFile(event)">
+      </label>
+      <span class="upload-status" id="upload-status"></span>
       <div class="tolerance-badge">&#177;10 cm tolerance</div>
       <span class="status-dot green"></span>
     </div>
@@ -677,12 +720,186 @@
     }
 
     // ═══════════════════════════════════════════════════════════
-    // 7. INIT
+    // 8. BIM FILE UPLOAD + SELECTION
+    // ═══════════════════════════════════════════════════════════
+
+    let currentBimData = null;
+
+    async function uploadIfcFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+
+      const status = document.getElementById('upload-status');
+      status.textContent = 'Uploading and parsing...';
+      status.className = 'upload-status loading';
+
+      const formData = new FormData();
+      formData.append('file', file);
+
+      try {
+        const response = await fetch('/api/upload-ifc', {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+
+        if (result.status === 'ok') {
+          status.textContent = `Loaded: ${result.project} (${result.num_objects} objects)`;
+          status.className = 'upload-status success';
+
+          // Add to select dropdown
+          const select = document.getElementById('bim-select');
+          const opt = document.createElement('option');
+          opt.value = result.filename;
+          opt.textContent = `${result.project} (${result.num_objects} objects)`;
+          select.appendChild(opt);
+          select.value = result.filename;
+
+          // Store data and update view
+          currentBimData = result;
+          updateBimView(result.objects);
+        } else {
+          status.textContent = `Error: ${result.error}`;
+          status.className = 'upload-status error';
+        }
+      } catch (err) {
+        status.textContent = `Upload failed: ${err.message}`;
+        status.className = 'upload-status error';
+      }
+
+      // Reset file input so the same file can be re-uploaded
+      event.target.value = '';
+    }
+
+    async function loadBimFile() {
+      const select = document.getElementById('bim-select');
+      const value = select.value;
+      const status = document.getElementById('upload-status');
+
+      if (!value) return;
+
+      if (value === 'synthetic') {
+        // Use the built-in synthetic test site BIM data
+        status.textContent = 'Loaded synthetic test site';
+        status.className = 'upload-status success';
+        // The BIM_OBJECTS array at the top already has this data
+        // We need to rebuild the BIM view with it
+        updateBimView(BIM_OBJECTS);
+        return;
+      }
+
+      // Load from API
+      status.textContent = 'Loading...';
+      status.className = 'upload-status loading';
+
+      try {
+        const response = await fetch(`/api/bim/${value}`);
+        const data = await response.json();
+        status.textContent = `Loaded: ${data.project} (${data.num_objects} objects)`;
+        status.className = 'upload-status success';
+        currentBimData = data;
+        updateBimView(data.objects);
+      } catch (err) {
+        status.textContent = `Error: ${err.message}`;
+        status.className = 'upload-status error';
+      }
+    }
+
+    // Override the BIM view builder to accept external data
+    function updateBimView(objects) {
+      // This replaces the BIM_OBJECTS in the scene
+      // We need to clear the existing BIM scene and rebuild
+      const container = document.getElementById('bim-container');
+      // Remove old canvas
+      const oldCanvas = container.querySelector('canvas');
+      if (oldCanvas) oldCanvas.remove();
+
+      // Rebuild with new objects
+      buildBIMView(objects);
+    }
+
+    // Modify buildBIMView to accept objects parameter
+    const originalBuildBIMView = buildBIMView;
+    buildBIMView = function(objects) {
+      const s = createScene('bim-container', 0x0a0a0f);
+
+      const categoryColors = {
+        structural: 0x3b82f6,
+        architectural: 0x22d3ee,
+        reinforcement: 0xf59e0b,
+        mechanical: 0x8b5cf6,
+        other: 0x60a5fa
+      };
+
+      (objects || BIM_OBJECTS).forEach(obj => {
+        const color = categoryColors[obj.category] || 0x60a5fa;
+        const dims = obj.dimensions || {};
+        const w = dims.width || dims.extent_x || 0.5;
+        const h = dims.height || dims.extent_y || 1.0;
+        const d = dims.depth || dims.extent_z || dims.thickness || 0.5;
+
+        const geo = new THREE.BoxGeometry(w, h, d);
+        const mat = new THREE.MeshPhongMaterial({
+          color: color,
+          transparent: true,
+          opacity: 0.6,
+          emissive: color,
+          emissiveIntensity: 0.1
+        });
+        const mesh = new THREE.Mesh(geo, mat);
+        mesh.position.set(obj.position.x, obj.position.y, obj.position.z);
+
+        const wireframe = new THREE.LineSegments(
+          new THREE.EdgesGeometry(geo),
+          new THREE.LineBasicMaterial({ color: 0x94a3b8, transparent: true, opacity: 0.3 })
+        );
+        wireframe.position.copy(mesh.position);
+        s.scene.add(mesh);
+        s.scene.add(wireframe);
+
+        const label = makeLabel(obj.name, color);
+        label.position.set(obj.position.x, obj.position.y + h/2 + 0.4, obj.position.z);
+        s.scene.add(label);
+      });
+
+      const dimText = makeLabel(`${objects ? objects.length : BIM_OBJECTS.length} objects loaded`, 0x64748b);
+      dimText.position.set(0, -0.8, 0);
+      s.scene.add(dimText);
+
+      animate(s);
+
+      window.addEventListener('resize', () => {
+        const c = document.getElementById('bim-container');
+        const w = c.clientWidth, h = c.clientHeight;
+        s.camera.aspect = w / h;
+        s.camera.updateProjectionMatrix();
+        s.renderer.setSize(w, h);
+      });
+    };
+
+    // ═══════════════════════════════════════════════════════════
+    // 7. INIT (runs on page load)
     // ═══════════════════════════════════════════════════════════
 
     buildCaptureView();
     buildBIMView();
     renderDeviations();
+
+    // Load BIM file list from API and populate dropdown
+    fetch('/api/bim-files')
+      .then(r => r.json())
+      .then(data => {
+        const select = document.getElementById('bim-select');
+        data.files.forEach(f => {
+          if (f.name !== 'test-site-01-bim.json') {
+            const opt = document.createElement('option');
+            opt.value = f.name;
+            opt.textContent = f.name.replace('.json', '').replace(/_/g, ' ');
+            select.appendChild(opt);
+          }
+        });
+      })
+      .catch(() => {}); // Server might not be running, that's ok
   </script>
 </body>
 </html>

@@ -1,0 +1,4072 @@
+{
+  "project": "DDS Project",
+  "source": "ifc",
+  "schema": "hyrolic-bim-v1",
+  "num_objects": 252,
+  "objects": [
+    {
+      "id": "392",
+      "name": "BinObjCom",
+      "ifc_type": "IfcBuildingElementProxy",
+      "category": "other",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 4.12
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "801",
+      "name": "Q1",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "817",
+      "name": "F1",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "833",
+      "name": "F2",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "849",
+      "name": "F3",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "865",
+      "name": "F4",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "881",
+      "name": "F5",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "902",
+      "name": "F6",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "917",
+      "name": "F7",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "933",
+      "name": "F8",
+      "ifc_type": "IfcFlowController",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "69",
+      "name": "+G=433.K1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.29,
+        "y": 61.52,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "70",
+      "name": "+G=432.K1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 260.69,
+        "y": 65.25,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 4.5,
+        "height": 0.6,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "73",
+      "name": "+G=434.K1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 255.7,
+        "y": 60.67,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 4.5,
+        "height": 0.6,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "74",
+      "name": "+G=514.K01",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 264.66,
+        "y": 59.43,
+        "z": 0.0
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "222",
+      "name": "+G=433.U1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.26,
+        "y": 61.53,
+        "z": 4.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "223",
+      "name": "+G=514.U1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 258.18,
+        "y": 62.11,
+        "z": 4.12
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "224",
+      "name": "+G=433.U2",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 255.87,
+        "y": 37.58,
+        "z": 4.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "225",
+      "name": "+G=433.U3",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 283.81,
+        "y": 43.72,
+        "z": 4.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "226",
+      "name": "+G=514.U3",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 285.68,
+        "y": 43.75,
+        "z": 4.12
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "227",
+      "name": "+G=434.U1",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 293.79,
+        "y": 49.44,
+        "z": 5.12
+      },
+      "dimensions": {
+        "width": 0.38,
+        "height": 0.248,
+        "depth": 0.84
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "413",
+      "name": "+G=433.11",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.26,
+        "y": 61.52,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "414",
+      "name": "+G=433.12",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 255.47,
+        "y": 37.54,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "415",
+      "name": "+G=433.13",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 283.77,
+        "y": 43.72,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "416",
+      "name": "+G=514.11",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 258.21,
+        "y": 62.1,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "417",
+      "name": "+G=514.13",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 285.72,
+        "y": 43.75,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "418",
+      "name": "+E=434.11",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 239.48,
+        "y": 83.37,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 4.5,
+        "height": 0.6,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "419",
+      "name": "+E=433.11",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 240.84,
+        "y": 83.37,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 4.5,
+        "height": 0.6,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "614",
+      "name": "+G=433.21",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.24,
+        "y": 61.53,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "615",
+      "name": "+G=433.22",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.4,
+        "y": 35.5,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "616",
+      "name": "+G=433.23",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 284.74,
+        "y": 44.57,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "617",
+      "name": "+G=514.23",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 286.4,
+        "y": 44.58,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "618",
+      "name": "+G=514.21",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 259.04,
+        "y": 62.3,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 1.0,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "633",
+      "name": "+G=621.21",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 277.03,
+        "y": 37.86,
+        "z": 11.905
+      },
+      "dimensions": {
+        "width": 0.25,
+        "height": 0.1,
+        "depth": 0.4
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "799",
+      "name": "+G=433.31",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 256.92,
+        "y": 61.96,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 0.7,
+        "height": 0.4,
+        "depth": 2.0
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "948",
+      "name": "+G=621.31",
+      "ifc_type": "IfcElectricDistributionPoint",
+      "category": "mechanical",
+      "position": {
+        "x": 262.61,
+        "y": 61.6,
+        "z": 15.322
+      },
+      "dimensions": {
+        "width": 0.25,
+        "height": 0.1,
+        "depth": 0.4
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "75",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.51,
+        "y": 73.16,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "77",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.243,
+        "y": 73.147,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "81",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 263.483,
+        "y": 70.062,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "84",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.51,
+        "y": 72.71,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "86",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.243,
+        "y": 72.697,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "90",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 262.931,
+        "y": 69.931,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "93",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.51,
+        "y": 72.21,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "95",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.233,
+        "y": 72.197,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "99",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 262.289,
+        "y": 69.796,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "102",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.48,
+        "y": 71.74,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "104",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.233,
+        "y": 71.727,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "107",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.233,
+        "y": 71.727,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "109",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 261.657,
+        "y": 69.692,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "112",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.52,
+        "y": 73.76,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "114",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.253,
+        "y": 73.747,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "118",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 264.013,
+        "y": 70.362,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "121",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 231.48,
+        "y": 71.22,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "123",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.223,
+        "y": 71.207,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "127",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 261.002,
+        "y": 69.544,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "130",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.26,
+        "y": 65.15,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "132",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.023,
+        "y": 65.137,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "136",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 284.807,
+        "y": 58.85,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "139",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.25,
+        "y": 65.69,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "141",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.033,
+        "y": 65.677,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "145",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 285.224,
+        "y": 59.155,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "148",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.26,
+        "y": 66.26,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "150",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.013,
+        "y": 66.247,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "153",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.013,
+        "y": 66.247,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "155",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 285.605,
+        "y": 59.496,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "158",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.26,
+        "y": 66.77,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "160",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.053,
+        "y": 66.757,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "164",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 286.241,
+        "y": 59.659,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "167",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.5,
+        "y": 44.56,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "169",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 282.251,
+        "y": 44.589,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "173",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 268.002,
+        "y": 58.793,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "176",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.48,
+        "y": 44.3,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "178",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 282.201,
+        "y": 44.329,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "182",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 267.907,
+        "y": 58.578,
+        "z": 3.0
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "190",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.83,
+        "y": 64.0,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "192",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.817,
+        "y": 42.287,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "196",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 257.087,
+        "y": 37.658,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "199",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 260.07,
+        "y": 64.0,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "201",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 260.057,
+        "y": 42.337,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "205",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 257.238,
+        "y": 37.555,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "208",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 260.36,
+        "y": 64.0,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "210",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 260.347,
+        "y": 42.327,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "214",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 257.356,
+        "y": 37.247,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "217",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.62,
+        "y": 65.31,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "218",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.62,
+        "y": 65.63,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "219",
+      "name": "Inntaksr\u00f8r",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.62,
+        "y": 65.94,
+        "z": -0.5
+      },
+      "dimensions": {
+        "width": 26.683,
+        "height": 0.11,
+        "depth": 0.11
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "267",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.466,
+        "y": 47.2,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 16.446,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "268",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.492,
+        "y": 51.997,
+        "z": 5.02
+      },
+      "dimensions": {
+        "width": 2.0,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "269",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.492,
+        "y": 47.197,
+        "z": 5.02
+      },
+      "dimensions": {
+        "width": 2.0,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "270",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.419,
+        "y": 56.446,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 14.05,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "271",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.393,
+        "y": 45.729,
+        "z": 5.02
+      },
+      "dimensions": {
+        "width": 2.0,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "272",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.616,
+        "y": 63.799,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 14.212,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "273",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 288.792,
+        "y": 63.763,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 6.933,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "275",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 288.792,
+        "y": 56.707,
+        "z": 5.02
+      },
+      "dimensions": {
+        "width": 2.3,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "336",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.266,
+        "y": 56.499,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 6.038,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "338",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.105,
+        "y": 56.499,
+        "z": 5.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "341",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.141,
+        "y": 55.395,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 5.816,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "343",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.177,
+        "y": 49.543,
+        "z": 4.897
+      },
+      "dimensions": {
+        "width": 6.203,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "487",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.491,
+        "y": 63.644,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "488",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.466,
+        "y": 38.0,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 25.644,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "489",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.492,
+        "y": 51.64,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "490",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.492,
+        "y": 44.53,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "491",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.439,
+        "y": 34.846,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "492",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.439,
+        "y": 30.046,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "493",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.439,
+        "y": 27.752,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "494",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 256.078,
+        "y": 25.357,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "495",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.078,
+        "y": 25.357,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "496",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 25.596,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "497",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 27.891,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "498",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 30.396,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "499",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 32.691,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "500",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 264.443,
+        "y": 37.307,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "501",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.419,
+        "y": 37.446,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 21.488,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "502",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.391,
+        "y": 47.197,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "503",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.388,
+        "y": 37.452,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "504",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.392,
+        "y": 46.846,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "505",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.392,
+        "y": 58.934,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "525",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.616,
+        "y": 63.801,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 6.833,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "527",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 281.572,
+        "y": 63.801,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 2.4,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "530",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 279.63,
+        "y": 61.416,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 4.887,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "532",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 274.62,
+        "y": 61.416,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 2.4,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "573",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 285.214,
+        "y": 50.276,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 2.599,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "575",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 285.214,
+        "y": 52.998,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "578",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.265,
+        "y": 47.194,
+        "z": 7.897
+      },
+      "dimensions": {
+        "width": 2.03,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "580",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.069,
+        "y": 49.337,
+        "z": 8.02
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "605",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.971,
+        "y": 63.824,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "606",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 286.372,
+        "y": 63.824,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "607",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 288.828,
+        "y": 63.823,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "608",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.018,
+        "y": 49.5,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "609",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.588,
+        "y": 51.9,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "610",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.598,
+        "y": 54.3,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "611",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.148,
+        "y": 56.7,
+        "z": 7.12
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "621",
+      "name": "542-KX01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "622",
+      "name": "542-KX01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "627",
+      "name": "542-KX02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "628",
+      "name": "542-KX02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "634",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 63.64,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "635",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 58.95,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "653",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 56.44,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "654",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.452,
+        "y": 54.15,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "655",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 51.64,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "656",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 49.35,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "657",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 46.84,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "658",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 44.55,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "659",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 34.84,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "660",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 32.55,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "661",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 27.75,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "662",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 52.036,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "663",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 49.536,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "664",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 47.236,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.677,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "666",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.377,
+        "y": 47.236,
+        "z": 13.205
+      },
+      "dimensions": {
+        "width": 0.128,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "669",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 44.736,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "670",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 41.136,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "671",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 37.486,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "672",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 264.5,
+        "y": 35.176,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "673",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 32.736,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "674",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 30.436,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "675",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.38,
+        "y": 30.004,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "676",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.5,
+        "y": 25.636,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "677",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.77,
+        "y": 25.636,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "678",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 260.194,
+        "y": 25.36,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "679",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 258.148,
+        "y": 44.59,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "680",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 259.25,
+        "y": 38.468,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "690",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.452,
+        "y": 61.22,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "691",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 42.04,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "692",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 250.442,
+        "y": 30.04,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "732",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.205,
+        "y": 59.021,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 4.591,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "734",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.205,
+        "y": 54.307,
+        "z": 11.305
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "738",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.205,
+        "y": 54.307,
+        "z": 13.205
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "741",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.169,
+        "y": 54.343,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 3.503,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "742",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 279.993,
+        "y": 49.298,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 4.535,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "744",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 284.564,
+        "y": 49.262,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 4.343,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "748",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 284.564,
+        "y": 44.796,
+        "z": 11.305
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "751",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.933,
+        "y": 39.9,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 9.344,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "753",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.071,
+        "y": 49.328,
+        "z": 11.305
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "756",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.803,
+        "y": 30.389,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 5.175,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "758",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.296,
+        "y": 35.574,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 0.185,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "762",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.075,
+        "y": 35.607,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 4.138,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "765",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 289.004,
+        "y": 30.193,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 5.59,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "767",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.63,
+        "y": 30.229,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 0.167,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "771",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.666,
+        "y": 30.432,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 0.023,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "775",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 294.766,
+        "y": 30.432,
+        "z": 11.305
+      },
+      "dimensions": {
+        "width": 1.9,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "778",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 293.058,
+        "y": 49.51,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "779",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.588,
+        "y": 51.91,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "780",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.618,
+        "y": 54.31,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "781",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 292.158,
+        "y": 56.71,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "784",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 288.916,
+        "y": 39.699,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 4.747,
+        "height": 0.072,
+        "depth": 0.123
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "785",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 279.728,
+        "y": 54.135,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "786",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 279.728,
+        "y": 51.735,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "787",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 284.834,
+        "y": 49.507,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "788",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 276.755,
+        "y": 63.824,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "789",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 279.155,
+        "y": 63.824,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "790",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 281.555,
+        "y": 63.824,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "791",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 283.955,
+        "y": 63.824,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "792",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 286.355,
+        "y": 63.824,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "793",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 288.828,
+        "y": 63.823,
+        "z": 11.182
+      },
+      "dimensions": {
+        "width": 2.023,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "794",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 54.291,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "795",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.443,
+        "y": 56.796,
+        "z": 10.405
+      },
+      "dimensions": {
+        "width": 2.8,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "802",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "803",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "806",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "809",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "812",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "815",
+      "name": "432-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "818",
+      "name": "461-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "819",
+      "name": "461-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "824",
+      "name": "461-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "829",
+      "name": "461-KW01",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "834",
+      "name": "461-KW02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "835",
+      "name": "461-KW02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "840",
+      "name": "461-KW02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "845",
+      "name": "461-KW02",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "850",
+      "name": "461-KW03",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "851",
+      "name": "461-KW03",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "856",
+      "name": "461-KW03",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "861",
+      "name": "461-KW03",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "866",
+      "name": "461-KW04",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "867",
+      "name": "461-KW04",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "872",
+      "name": "461-KW04",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "877",
+      "name": "461-KW04",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "882",
+      "name": "461-KW05",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "883",
+      "name": "461-KW05",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "888",
+      "name": "461-KW05",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "893",
+      "name": "461-KW05",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "898",
+      "name": "461-KW05",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "903",
+      "name": "461-KW06",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "908",
+      "name": "461-KW06",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "913",
+      "name": "461-KW06",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "918",
+      "name": "461-KW07",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "919",
+      "name": "461-KW07",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "924",
+      "name": "461-KW07",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "929",
+      "name": "461-KW07",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "934",
+      "name": "461-KW08",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "935",
+      "name": "461-KW08",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "940",
+      "name": "461-KW08",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "945",
+      "name": "461-KW08",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "962",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 61.32,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "963",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 58.95,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "964",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 56.55,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "965",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 52.0,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "966",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 51.75,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "967",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 49.35,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "968",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 54.04,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "969",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 255.842,
+        "y": 46.84,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "970",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 59.1,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "971",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 56.8,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "972",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 54.3,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "973",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 49.5,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "974",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 47.2,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "975",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 44.7,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "976",
+      "name": "Veggkanal",
+      "ifc_type": "IfcFlowSegment",
+      "category": "mechanical",
+      "position": {
+        "x": 265.438,
+        "y": 42.4,
+        "z": 13.822
+      },
+      "dimensions": {
+        "width": 2.9,
+        "height": 0.123,
+        "depth": 0.072
+      },
+      "material": "unknown"
+    },
+    {
+      "id": "620",
+      "name": "Z1",
+      "ifc_type": "IfcFlowTerminal",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    },
+    {
+      "id": "626",
+      "name": "Z2",
+      "ifc_type": "IfcFlowTerminal",
+      "category": "mechanical",
+      "position": {
+        "x": 0.0,
+        "y": 0.0,
+        "z": 0.0
+      },
+      "dimensions": {},
+      "material": "unknown"
+    }
+  ]
+}
